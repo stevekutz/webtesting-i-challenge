@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "webtesting intro",
   "main": "index.js",
+  "scripts": {
+    "test": "jest --watch --verbose"
+  },
   "repository": "https://github.com/stevekutz/webtesting-i-challenge.git",
   "author": "stevekutz <stkutz@gmail.com>",
   "license": "MIT",
