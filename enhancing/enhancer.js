@@ -12,7 +12,18 @@ function succeed(item) {
 }
 
 function fail(item) {
-  return { ...item };
+  newItem = {...item};
+    if(newItem.enhancement < 15){
+      newItem.durability -= 5;
+      if(newItem.durability < 0) {newItem.durability = 0} 
+    } else if(newItem.enhancement >= 15) {
+      newItem.durability -= 10;
+      if(newItem.durability < 0) {newItem.durability = 0} 
+      if(newItem.enhancement > 16 && newItem.enhancement <= 20) {newItem.enhancement--}
+    }
+
+  return newItem;  
+
 }
 
 function repair(item) {
