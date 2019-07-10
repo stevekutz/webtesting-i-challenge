@@ -32,6 +32,11 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  newItem = {...item};
+  if(newItem.enhancement > 0 && newItem.enhancement < 20) {
+    newItem.name  = `[+${newItem.enhancement}] ${newItem.name}`;
+  }
+
+  return newItem;
 }
 

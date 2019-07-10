@@ -81,9 +81,21 @@ describe('the enhancer', () => {
           };
           expect(enhancer.fail(weapon.mace_enh21_dur100)).toEqual(result);
        })
+   })
+   // STRETCH - add modifiy name to show enhancement if enhancement > 0
+   describe('get prefixes name with [enhancement] if enhancement > 0', () => {
+    it('should prefix name wth enhancement', () => {
+            const result = {
+                name: '[+18] Macey2',
+                enhancement: 18,
+                durability: 9,
+              };
+
+
+        expect(enhancer.get(weapon.mace_enh18_dur9)).toEqual(result);
+    })
+
 
    })
-
-
 
 });
