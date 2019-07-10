@@ -39,7 +39,11 @@ module.exports = {
       enhancement: 21,
       durability: 100,
     }, 
-
+    banana: {
+      name: 'banana peel',
+      enhancement: 0,
+      durability: 1,
+    }
 
 
   }

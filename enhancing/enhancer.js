@@ -3,6 +3,7 @@ module.exports = {
   fail,
   repair,
   get,
+  get2,
 }
 
 function succeed(item) {
@@ -38,5 +39,13 @@ function get(item) {
   }
 
   return newItem;
+}
+
+function get2(item) {
+  if(item.enhancement > 0 && item.enhancement < 20) {
+    item.name  = `[+${item.enhancement}] ${item.name}`;
+  }
+
+  return {...item};
 }
 

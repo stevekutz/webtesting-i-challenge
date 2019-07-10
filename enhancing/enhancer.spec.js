@@ -31,7 +31,11 @@ describe('the enhancer', () => {
     })
     // fail- decreases durability by 5 if enhancement is less than 5
    describe('fail decrements durability by 5', () => {
-       it('should decrement durability by 5 if enhancement is < 15', () => {
+        it('should return a new item, not modified original item', () => {
+            expect(enhancer.fail(weapon.claw_enh20)).not.toEqual(weapon.sword_enh20);
+        })
+
+        it('should decrement durability by 5 if enhancement is < 15', () => {
             const result = {
                 name: 'Macey1',
                 enhancement: 14,
@@ -79,23 +83,49 @@ describe('the enhancer', () => {
                 enhancement: 21,
                 durability: 90,
           };
-          expect(enhancer.fail(weapon.mace_enh21_dur100)).toEqual(result);
+          const asserted =  expect(enhancer.fail(weapon.mace_enh21_dur100));
+
+          // expect(enhancer.fail(weapon.mace_enh21_dur100)).toEqual(result);
+          asserted.toEqual(result);
        })
    })
    // STRETCH - add modifiy name to show enhancement if enhancement > 0
    describe('get prefixes name with [enhancement] if enhancement > 0', () => {
+        it('should return a new item, not modified original item', () => {
+            expect(enhancer.get(weapon.claw_enh20)).not.toEqual(weapon.sword_enh20);
+        })    
+        it('should prefix name wth enhancement', () => {
+                const result = {
+                    name: '[+18] Macey2',
+                    enhancement: 18,
+                    durability: 9,
+                };
+            expect(enhancer.get(weapon.mace_enh18_dur9)).toEqual(result);
+        })
+        it('should NOT prefix name with enhancement if enhancement = 0', () => {
+            expect(enhancer.get(weapon.banana)).toEqual(weapon.banana);
+        })
+   })
+
+   // REFACTORED STRETCH
+   describe('get2 prefixes name with [enhancement] if enhancement > 0', () => {
+    
+    it('should return a new item, not modified original item', () => {
+        expect(enhancer.get2(weapon.claw_enh20)).not.toEqual(weapon.sword_enh20);
+    })    
     it('should prefix name wth enhancement', () => {
             const result = {
                 name: '[+18] Macey2',
                 enhancement: 18,
                 durability: 9,
-              };
-
-
-        expect(enhancer.get(weapon.mace_enh18_dur9)).toEqual(result);
+            };
+        expect(enhancer.get2(weapon.mace_enh18_dur9)).toEqual(result);
     })
+    it('should NOT prefix name with enhancement if enhancement = 0', () => {
+        expect(enhancer.get2(weapon.banana)).toEqual(weapon.banana);
+    })
+})
 
 
-   })
 
 });
